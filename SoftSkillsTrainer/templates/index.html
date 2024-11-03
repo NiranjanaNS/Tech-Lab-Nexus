@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Soft Skills Chatbot</title>
+</head>
+<body>
+    <h1>Welcome to the Soft Skills Trainer</h1>
+    <input id="user_input" type="text" placeholder="Type a message..." />
+    <button onclick="sendMessage()">Send</button>
+    <div id="chatbox"></div>
+    <script>
+        async function sendMessage() {
+            const message = document.getElementById('user_input').value;
+            const response = await fetch('/chat', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({message})
+            });
+            const data = await response.json();
+            document.getElementById('chatbox').innerHTML += "<p>" + data.response + "</p>";
+        }
+    </script>
+</body>
+</html>
