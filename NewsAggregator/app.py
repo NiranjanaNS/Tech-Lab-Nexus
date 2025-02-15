@@ -1,10 +1,11 @@
+```python
 from flask import Flask, render_template
 import feedparser
 
 app = Flask(__name__)
 feeds = {
-    "AI": "https://ai-news-url.com/rss",
-    "Cybersecurity": "https://cybersecurity-news-url.com/rss"
+    "AI": "https://example.com/ai-news-rss",
+    "Cybersecurity": "https://example.com/cybersecurity-news-rss"
 }
 
 def fetch_news(category):
@@ -18,3 +19,4 @@ def news(category):
 
 if __name__ == '__main__':
     app.run(debug=True)
+```
