@@ -1,3 +1,4 @@
+```python
 import spacy
 nlp = spacy.load("en_core_web_sm")
 
@@ -5,11 +6,10 @@ def analyze_resume(text):
     doc = nlp(text)
     keywords = ["Python", "cybersecurity", "cloud", "AI", "data science"]
     score = sum(1 for token in doc if token.text in keywords)
-    feedback = f"Resume has {score} relevant keywords. Consider adding more if needed."
-    word_count = len(doc)
-    feedback += "\nYour resume may need more detail." if word_count < 300 else "\nNice word count!"
+    feedback = f"Resume has {score} relevant keywords. Consider adding more."
     return feedback
 
-# Load sample resume text
-resume_text = open("sample_resume.txt").read()
-print(analyze_resume(resume_text))
+with open("sample_resume.txt") as file:
+    resume_text = file.read()
+    print(analyze_resume(resume_text))
+```
